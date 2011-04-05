@@ -104,10 +104,10 @@ class ChangeList(object):
         # Perform a slight optimization: Check to see whether any filters were
         # given. If not, use paginator.hits to calculate the number of objects,
         # because we've already done paginator.hits and the value is cached.
-        if not self.query_set.query.where:
-            full_result_count = result_count
-        else:
-            full_result_count = self.root_query_set.count()
+
+        # !!! Instagram modification
+        # We don't fetch the full result count, it's a huge performance bottleneck
+        full_result_count = 0
 
         can_show_all = result_count <= MAX_SHOW_ALL_ALLOWED
         multi_page = result_count > self.list_per_page
