@@ -107,7 +107,7 @@ class ChangeList(object):
 
         # !!! Instagram modification
         # We don't fetch the full result count, it's a huge performance bottleneck
-        full_result_count = 0
+        full_result_count = 1
 
         can_show_all = result_count <= MAX_SHOW_ALL_ALLOWED
         multi_page = result_count > self.list_per_page
